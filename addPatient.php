@@ -77,15 +77,19 @@
 
                                     <div class="form-group row">
                                         <label for="input-16" class="col-sm-2 col-form-label">Contact Number</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-4">
                                             <input type="text" class="form-control" id="input-16" name="contactnumber">
                                         </div>
+                                        <label for="input-17" class="col-sm-2 col-form-label">birthday</label>
+                                        <div class="col-sm-4">
+                                        <input type="text" id="autoclose-datepicker" name ="bday" class="form-control">
+                                        </div>
                                     </div>
-
+                                    
                                     <div class="form-group row">
                                         <label for="input-17" class="col-sm-2 col-form-label">Address</label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" name="address" rows="4" id="input-17"></textarea>
+                                            <textarea class="form-control" name="address" rows="4" id="address"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-footer">
@@ -123,7 +127,7 @@
   
   <!-- Custom scripts -->
   <script src="assets/js/app-script.js"></script>
-
+  <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
   <!--Form Validatin Script-->
     <script src="assets/plugins/jquery-validation/js/jquery.validate.min.js"></script>
         <script src="assets/plugins/jquery-validation/js/jquery.validate.min.js"></script>
@@ -139,7 +143,8 @@
                             required: true,
                             minlength: 10
                         },
-                        address : "required"
+                        address : "required",
+                        bday : "required"
                     },
                     messages: {
                         firstname: "Please enter your firstname",
@@ -160,10 +165,42 @@
                         email: "Please enter a valid email address",
                         contactnumber: "Please enter your 10 digit number",
                         agree: "Please accept our policy",
-                        address: "Please enter your address"
+                        address: "Please enter your address",
+                        bday: "Please enter your Birthday"
+                    },
+                    submitHandler: function(form,e) {
+                        e.preventDefault();
+                        var fname = $("input[name='firstname']").val();
+                        var lname = $("input[name='lastname']").val();
+                        var mname = $("input[name='middlename']").val();
+                        var suffix = $("input[name='suffix']").val();
+                        var contact = $("input[name='contactnumber']").val();
+                        var address = $("#address").val();
+                        var bday = $("input[name='bday']").val();
+                        console.log(bday)
+                        console.log('Form submitted');
+                        $.ajax({
+                            type: 'POST',
+                            url: 'command/process.php',
+                            dataType: "html",
+                            data: {'fname': fname,'lname': lname,'mname': mname,'suffix': suffix,'bday':bday,'contact': contact,'address': address,'addPatient': true},
+                            success: function(result) {
+                                console.log(result)
+                            },
+                            error : function(error) {
+
+                            }
+                        });
+                        return false;
                     }
+                    
                 });
 
+            });
+            $('#autoclose-datepicker').datepicker({
+                autoclose: true,
+                todayHighlight: true,
+                format: 'yyyy-mm-dd'
             });
         </script>
 </body>

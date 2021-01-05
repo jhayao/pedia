@@ -42,11 +42,16 @@
 
     //add Patient
     if (isset($_POST["addPatient"])) {
-        $username = $_POST["username"];
-        $pass = md5($_POST["password"]);
-        $name = $_POST["name"];
-        $user = $_POST["userType"];
-        $query = "insert into users values(null,'$name','$username','$pass','$user')";
+        $fname = $_POST["fname"];
+        $lname = $_POST["lname"];
+        $mname = $_POST["mname"];
+        $suffix = $_POST["suffix"];
+        $contact = $_POST["contact"];
+        $address = $_POST["address"];
+        $bday = $_POST["bday"];
+       
+        echo $bday;
+        $query = "INSERT INTO `patients`(`id`, `lname`, `fname`, `mname`, `suffix`, `bday`, `contact`, `address`) VALUES (null,'$lname','$fname','$mname','$suffix','$bday','$contact','$address')";
         $result = $con->query($query);
         if($result)
         {
