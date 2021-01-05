@@ -34,7 +34,7 @@
         </a>
 		<ul class="sidebar-submenu">
 		  <li><a href="addPatient.php"><i class="zmdi zmdi-dot-circle-alt"></i> Add Patient</a></li>
-		  <li><a href="dashboard-human-resources.html"><i class="zmdi zmdi-dot-circle-alt"></i>View Patients</a></li>
+		  <li><a href="viewpatient.php"><i class="zmdi zmdi-dot-circle-alt"></i>View Patients</a></li>
 		</ul>
       </li>
       <li>

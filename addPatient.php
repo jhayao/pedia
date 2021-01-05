@@ -1,5 +1,4 @@
 <?php include('head.php')?>
-
 <body class="bg-theme bg-theme1">
 
     <!-- start loader -->
@@ -111,14 +110,15 @@
             <!-- End container-fluid-->
 
         </div>
+        <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
         <!--End content-wrapper-->
-
+    </div>
         <?php 
     include('theme.php');
     ?>
     <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 	
   <!-- simplebar js -->
   <script src="assets/plugins/simplebar/js/simplebar.js"></script>
