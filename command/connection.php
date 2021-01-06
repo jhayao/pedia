@@ -1,5 +1,6 @@
 <?php
 $con = new mysqli("localhost","root","","thesis");
+session_start();
 
 // Check connection
 if ($con -> connect_errno) {

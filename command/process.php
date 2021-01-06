@@ -1,5 +1,5 @@
 <?php   
-    include("connection.php");
+    include_once("connection.php");
     //Login
     if (isset($_POST["login"])) {
         $username = $_POST["username"];
@@ -11,6 +11,7 @@
             if($rowcount=$result->num_rows)
             {
                 echo "success";
+                $_SESSION['username']=$username;
             }
             else
             {
@@ -49,8 +50,6 @@
         $contact = $_POST["contact"];
         $address = $_POST["address"];
         $bday = $_POST["bday"];
-       
-        echo $bday;
         $query = "INSERT INTO `patients`(`id`, `lname`, `fname`, `mname`, `suffix`, `bday`, `contact`, `address`) VALUES (null,'$lname','$fname','$mname','$suffix','$bday','$contact','$address')";
         $result = $con->query($query);
         if($result)
@@ -61,5 +60,9 @@
         {
             echo  $con -> error;
         }
+    }
+    if(isset($_POST["logout"]))
+    {
+        session_destroy();
     }
 ?>

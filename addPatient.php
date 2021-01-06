@@ -1,8 +1,15 @@
 <?php include('head.php')?>
+
 <body class="bg-theme bg-theme1">
 
     <!-- start loader -->
-    <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner" ><div class="loader"></div></div></div></div>
+    <div id="pageloader-overlay" class="visible incoming">
+        <div class="loader-wrapper-outer">
+            <div class="loader-wrapper-inner">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
     <!-- end loader -->
 
     <!-- Start wrapper-->
@@ -81,14 +88,16 @@
                                         </div>
                                         <label for="input-17" class="col-sm-2 col-form-label">birthday</label>
                                         <div class="col-sm-4">
-                                        <input type="text" id="autoclose-datepicker" name ="bday" class="form-control">
+                                            <input type="text" id="autoclose-datepicker" name="bday"
+                                                class="form-control">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group row">
                                         <label for="input-17" class="col-sm-2 col-form-label">Address</label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" name="address" rows="4" id="address"></textarea>
+                                            <textarea class="form-control" name="address" rows="4"
+                                                id="address"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-footer">
@@ -113,94 +122,112 @@
         <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
         <!--End content-wrapper-->
     </div>
-        <?php 
+    <?php 
     include('theme.php');
     ?>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-	
-  <!-- simplebar js -->
-  <script src="assets/plugins/simplebar/js/simplebar.js"></script>
-  <!-- sidebar-menu js -->
-  <script src="assets/js/sidebar-menu.js"></script>
-  
-  <!-- Custom scripts -->
-  <script src="assets/js/app-script.js"></script>
-  <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-  <!--Form Validatin Script-->
+
+    <!-- simplebar js -->
+    <script src="assets/plugins/simplebar/js/simplebar.js"></script>
+    <!-- sidebar-menu js -->
+    <script src="assets/js/sidebar-menu.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="assets/js/app-script.js"></script>
+    <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/plugins/alerts-boxes/js/sweetalert.min.js"></script>
+    <script src="assets/plugins/alerts-boxes/js/sweet-alert-script.js"></script>
+    <!--Form Validatin Script-->
     <script src="assets/plugins/jquery-validation/js/jquery.validate.min.js"></script>
-        <script src="assets/plugins/jquery-validation/js/jquery.validate.min.js"></script>
-        <script>
-            $(document).ready(function(){ 
-                // validate signup form on keyup and submit
-                $("#signupForm").validate({
-                    rules: {
-                        firstname: "required",
-                        lastname: "required",
-                        middlename: "required",
-                        contactnumber: {
-                            required: true,
-                            minlength: 10
-                        },
-                        address : "required",
-                        bday : "required"
+    <script>
+        $(document).ready(function () {
+            // validate signup form on keyup and submit
+            $("#signupForm").validate({
+                rules: {
+                    firstname: "required",
+                    lastname: "required",
+                    middlename: "required",
+                    contactnumber: {
+                        required: true,
+                        minlength: 10
                     },
-                    messages: {
-                        firstname: "Please enter your firstname",
-                        lastname: "Please enter your lastname",
-                        username: {
-                            required: "Please enter a username",
-                            minlength: "Your username must consist of at least 2 characters"
-                        },
-                        password: {
-                            required: "Please provide a password",
-                            minlength: "Your password must be at least 5 characters long"
-                        },
-                        confirm_password: {
-                            required: "Please provide a password",
-                            minlength: "Your password must be at least 5 characters long",
-                            equalTo: "Please enter the same password as above"
-                        },
-                        email: "Please enter a valid email address",
-                        contactnumber: "Please enter your 10 digit number",
-                        agree: "Please accept our policy",
-                        address: "Please enter your address",
-                        bday: "Please enter your Birthday"
+                    address: "required",
+                    bday: "required"
+                },
+                messages: {
+                    firstname: "Please enter your firstname",
+                    lastname: "Please enter your lastname",
+                    username: {
+                        required: "Please enter a username",
+                        minlength: "Your username must consist of at least 2 characters"
                     },
-                    submitHandler: function(form,e) {
-                        e.preventDefault();
-                        var fname = $("input[name='firstname']").val();
-                        var lname = $("input[name='lastname']").val();
-                        var mname = $("input[name='middlename']").val();
-                        var suffix = $("input[name='suffix']").val();
-                        var contact = $("input[name='contactnumber']").val();
-                        var address = $("#address").val();
-                        var bday = $("input[name='bday']").val();
-                        console.log(bday)
-                        console.log('Form submitted');
-                        $.ajax({
-                            type: 'POST',
-                            url: 'command/process.php',
-                            dataType: "html",
-                            data: {'fname': fname,'lname': lname,'mname': mname,'suffix': suffix,'bday':bday,'contact': contact,'address': address,'addPatient': true},
-                            success: function(result) {
-                                console.log(result)
-                            },
-                            error : function(error) {
-
+                    password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 5 characters long"
+                    },
+                    confirm_password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 5 characters long",
+                        equalTo: "Please enter the same password as above"
+                    },
+                    email: "Please enter a valid email address",
+                    contactnumber: "Please enter your 10 digit number",
+                    agree: "Please accept our policy",
+                    address: "Please enter your address",
+                    bday: "Please enter your Birthday"
+                },
+                submitHandler: function (form, e) {
+                    e.preventDefault();
+                    var fname = $("input[name='firstname']").val();
+                    var lname = $("input[name='lastname']").val();
+                    var mname = $("input[name='middlename']").val();
+                    var suffix = $("input[name='suffix']").val();
+                    var contact = $("input[name='contactnumber']").val();
+                    var address = $("#address").val();
+                    var bday = $("input[name='bday']").val();
+                    console.log(bday)
+                    console.log('Form submitted');
+                    $.ajax({
+                        type: 'POST',
+                        url: 'command/process.php',
+                        dataType: "html",
+                        data: {
+                            'fname': fname,
+                            'lname': lname,
+                            'mname': mname,
+                            'suffix': suffix,
+                            'bday': bday,
+                            'contact': contact,
+                            'address': address,
+                            'addPatient': true
+                        },
+                        success: function (result) {
+                            console.log(result)
+                            if (result == "success") {
+                                swal("Success!", "Patient successfully added!!",
+                                    "success");
+                                $("form").trigger("reset");
+                            } else {
+                                swal("Error!", "Error : " + result, "error");
                             }
-                        });
-                        return false;
-                    }
-                    
-                });
+
+                        },
+                        error: function (error) {
+
+                        }
+                    });
+                    return false;
+                }
 
             });
-            $('#autoclose-datepicker').datepicker({
-                autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
-            });
-        </script>
+
+        });
+        $('#autoclose-datepicker').datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            format: 'yyyy-mm-dd'
+        });
+    </script>
 </body>
