@@ -71,7 +71,12 @@
         <a href="calendar.html" class="waves-effect">
           <i class="zmdi zmdi-calendar-check"></i> <span>About</span>
         </a>
-      
+      </li>
+      <li>
+        <a href="viewRoom.php" class="waves-effect">
+          <i class="zmdi zmdi-calendar-check"></i> <span>Room Temperature</span>
+        </a>
+      </li>
     </ul>
    
    </div>
